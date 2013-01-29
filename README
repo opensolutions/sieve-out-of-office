@@ -1,0 +1,10 @@
+Out-of-Office
+-------------
+
+This add-on for Mozilla Thunderbird sets vacation notifications and redirections up using Sieve.
+
+This add-on is written in XUL and Javascript.
+
+Trustedbird/Milimail project
+URL: http://www.trustedbird.org
+Licenses: MPL 1.1+/GPL 2.0+/LGPL 2.1+

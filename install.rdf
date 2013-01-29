@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is Mozilla Communicator
+   -
+   - The Initial Developer of the Original Code is
+   -   BT Global Services / Etat francais Ministere de la Defense
+   - Portions created by the Initial Developer are Copyright (C) 2008
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s): 
+    -   Olivier Brun BT Global Services / Etat francais Ministere de la Defense
+    -   JC Prin (jisse44)
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<rdf:Description about="urn:mozilla:install-manifest">
+
+	        <em:id>out_of_office@opensolutions.ie</em:id>
+	        <em:version>2.0.0</em:version>
+	        <em:name>Sieve Out of Office</em:name>
+	        <em:description>A Thunderbird plugin to allow one to set out of office messages and / or redirect emails to colleagues via a easy to use pop-up dialog.
+
+This Out of Office plugin requires that your POP3 / IMAP server also have a sieve service.</em:description>
+                <em:creator>Trustedbird/Milimail project</em:creator>
+	        <em:developer>Olivier Brun</em:developer>
+        	<em:contributor>JC Prin (jisse44)</em:contributor>
+	        <em:contributor>Roland Huszti (www.opensolutions.ie)</em:contributor>
+        	<em:contributor>Barry O&#39;Donovan (www.opensolutions.ie)</em:contributor>
+	        <em:homepageURL>https://github.com/opensolutions/sieve-out-of-office</em:homepageURL>
+		<em:iconURL>chrome://out_of_office/content/images/logo_extension.png</em:iconURL>
+	        <em:targetApplication>
+        	    <Description>
+                	<!-- Thunderbird -->
+	                <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        	        <em:minVersion>17.0</em:minVersion>
+                	<em:maxVersion>21.0a1</em:maxVersion>
+	            </Description>
+        	</em:targetApplication>
+	    </Description>
+
+		<em:localized>
+			<Description>
+				<em:locale>en-US</em:locale>
+				<em:name>Sieve Out Of Office</em:name>
+				<em:description>Setup vacation notifications and redirections using Sieve.</em:description>
+			</Description>
+		</em:localized>
+
+		<em:localized>
+			<Description>
+				<em:locale>fr-FR</em:locale>
+				<em:name>Sieve Out Of Office</em:name>
+				<em:description>Paramétrage des notifications d'absences et de redirections en utilisant Sieve</em:description>
+			</Description>
+		</em:localized>
+
+	</rdf:Description>
+</rdf:RDF>

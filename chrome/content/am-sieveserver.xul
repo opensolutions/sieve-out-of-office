@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is Mozilla Communicator
+   -
+   - The Initial Developer of the Original Code is
+   -   BT Global Services / Etat francais Ministere de la Defense
+   - Portions created by the Initial Developer are Copyright (C) 2002
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Olivier Brun BT Global Services / Etat francais Ministere de la Defense
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://messenger/skin/accountManage.css" type="text/css"?>
+
+<!DOCTYPE page [
+<!ENTITY % amSieveServerDTD SYSTEM "chrome://out_of_office/locale/locale.dtd">
+<!ENTITY % outofofficeDTD SYSTEM "chrome://out_of_office/locale/out_of_office_locale.dtd">
+%amSieveServerDTD;
+%outofofficeDTD;
+]>
+
+<page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="parent.onPanelLoaded('am-sieveserver.xul');">
+    <stringbundle id="bundle_out_of_office" src="chrome://out_of_office/locale/out_of_office_locale.properties" />
+    <script type="application/x-javascript" src="chrome://out_of_office/content/libs/preferences.js" />
+    <script type="application/x-javascript" src="chrome://out_of_office/content/libs/misc.js" />
+    <script type="application/x-javascript" src="chrome://out_of_office/content/OutOfOfficeOverlay.js" />
+    <script type="application/x-javascript" src="chrome://messenger/content/AccountManager.js" />
+    <script type="application/x-javascript" src="chrome://out_of_office/content/am-sieveserver.js" />
+
+    <dialogheader title="&outofoffice.pane.title;" />
+
+    <hbox id="smtpServerInfoBox" class="indent">
+        <stack flex="1" class="inset">
+            <spacer id="backgroundBox" />
+            <grid>
+                <columns>
+                    <column />
+                    <column flex="1" />
+                </columns>
+                <rows>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblHost" value="&options.info.servername;" /></hbox>
+                        <textbox id="txtDispHostname" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblPort" value="&options.info.port;" /></hbox>
+                        <textbox id="txtDispPort" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblAuth" value="&options.info.auth;" /></hbox>
+                        <textbox id="txtDispAuth" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblUserName" value="&options.info.username;" /></hbox>
+                        <textbox id="txtDispUserName" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblTLS" value="&options.info.secure;" /></hbox>
+                        <textbox id="txtDispTLS" class="plain" readonly="true" />
+                    </row>
+                </rows>
+            </grid>
+        </stack>
+    </hbox>
+
+    <separator/>
+
+    <hbox>
+        <vbox flex="1">
+            <groupbox flex="1">
+                <checkbox id="cbxEnableOOO" label="Enable Out Of Office add-on" oncommand="enableAll( this );" />
+                <separator />
+                <checkbox id="cbxHost" label="&options.host.label;" accesskey="&options.host.key;" oncommand="onHostCommand(this)" />
+                <grid>
+                    <colums>
+                        <column />
+                        <column />
+                    </colums>
+                    <rows>
+                        <row align="center">
+                            <hbox>
+                                <label id="labelHostname" value="&options.host.hostname.label;" accesskey="&options.host.hostname.key;" control="txtHostname" />
+                            </hbox>
+                            <hbox align="center">
+                                <label collapsed="true" use="txtHostname" />
+                                <textbox wsm_persist="true" size="20" id="txtHostname" oninput="onHostnameChange(this)" class="uri-element" />
+                                <label id="labelPort" value="&options.host.port.label;" accesskey="&options.host.port.key;" control="txtPort" />
+                                <label hidefor="movemail" collapsed="true" use="txtPort" />
+                                <textbox wsm_persist="true" size="3" id="txtPort" oninput="onPortChange(this)" preftype="int" />
+                                <label id="labelDefaultPort" value="&options.host.port.default;" hidefor="movemail" />
+                            </hbox>
+                        </row>
+                        <row align="center">
+                            <spacer />
+                            <hbox align="center">
+                                <checkbox id="cbxTLS" oncommand="onTLSCommand(this)" label="&options.host.tls;" accesskey="&options.host.tls.key;" />
+                            </hbox>
+                        </row>
+                    </rows>
+                </grid>
+            </groupbox>
+        </vbox>
+    </hbox>
+
+    <!-- This part is hidden, to make configuration more simply -->
+    <hbox >
+        <vbox flex="1">
+            <groupbox id="groupLogin" flex="1">
+                <caption id="labelLogin" label="&options.login.label;" />
+                <radiogroup id="rgLogin" onselect="onLoginSelect(this);">
+                    <radio id="rbNoAuth" label="&options.login.noAuth;" />
+                    <radio id="rbImapAuth" label="&options.login.imapAuth;" />
+                    <radio id="rbCustomAuth" label="&options.login.customAuth;" />
+                </radiogroup>
+                <hbox>
+                    <spacer width="21px" />
+                    <grid>
+                        <colums>
+                            <column />
+                            <column />
+                        </colums>
+                        <rows>
+                            <row align="center">
+                                <hbox>
+                                    <label id="labelUsername" value="&options.login.username.label;" accesskey="&options.login.username.key;" control="txtUsername" />
+                                    <textbox id="txtUsername" size="17" onchange="onLoginChange(this)" />
+                                </hbox>
+                                <hbox>
+                                    <label id="labelPassword" value="&options.login.password.label;" accesskey="&options.login.password.key;" control="txtPassword" />
+                                    <textbox id="txtPassword" type="password" size="17" onchange="onLoginChange(this)" onfocus="onPasswordFocus(this)" />
+                                </hbox>
+                            </row>
+                            <row align="center">
+                                <hbox>
+                                    <spacer />
+                                </hbox>
+                                <hbox>
+                                    <checkbox id="cbxPassword" oncommand="onPasswordCommand(this)" accesskey="&options.login.password.remember.key;" label="&options.login.password.remember;" />
+                                </hbox>
+                            </row>
+                        </rows>
+                    </grid>
+                </hbox>
+            </groupbox>
+        </vbox>
+    </hbox>
+</page>

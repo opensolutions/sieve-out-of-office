@@ -1,0 +1,9 @@
+content out_of_office   chrome/content/
+locale  out_of_office   en-US   chrome/locale/en-US/
+locale  out_of_office   fr-FR   chrome/locale/fr-FR/
+
+overlay chrome://messenger/content/messenger.xul chrome://out_of_office/content/OutOfOfficeMenuOverlay.xul
+
+component {717489b0-7d88-11dd-ad8b-0800200c9a66} components/sieveserver-service.js
+contract @mozilla.org/accountmanager/extension;1?name=sieveserver {717489b0-7d88-11dd-ad8b-0800200c9a66}
+category mailnews-accountmanager-extensions outofoffice-accountmanager-extension @mozilla.org/accountmanager/extension;1?name=sieveserver

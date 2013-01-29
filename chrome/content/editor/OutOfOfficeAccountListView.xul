@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is Mozilla Communicator
+   -
+   - The Initial Developer of the Original Code is
+   -   BT Global Services / Etat francais Ministere de la Defense
+   - Portions created by the Initial Developer are Copyright (C) 2002
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Olivier Brun BT Global Services / Etat francais Ministere de la Defense
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/accountManage.css" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % amSieveServerDTD SYSTEM "chrome://out_of_office/locale/locale.dtd">
+<!ENTITY % outofofficeDTD SYSTEM "chrome://out_of_office/locale/out_of_office_locale.dtd">
+%amSieveServerDTD;
+%outofofficeDTD;
+]>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept"
+        onload="onWindowLoad();"
+        style="width: 45em; height: 30em;"
+        title="&outofoffice.list.title;">
+
+    <script type="application/x-javascript" src="chrome://out_of_office/content/libs/preferences.js" />
+    <script type="application/x-javascript" src="chrome://out_of_office/content/libs/misc.js" />
+    <script type="application/x-javascript" src="chrome://out_of_office/content/editor/OutOfOfficeManager.js"/>
+    <script type="application/x-javascript" src="chrome://out_of_office/content/editor/OutOfOfficeAccountListView.js"/>
+
+    <grid flex="1">
+        <columns>
+            <column flex="1"/>
+            <column/>
+        </columns>
+        <rows>
+            <row>
+                <description>&outofoffice.description;</description>
+            </row>
+            <row flex="1">
+                <vbox>
+                    <tree id="treeAccounts" flex="1" hidecolumnpicker="true" seltype="single" onselect="onTreeSelect(this)">
+                        <treecols>
+                            <treecol id="namecol" label="&accounts.column.name;" flex="1" />
+                            <treecol id="active" label="&outofoffice.tree.sieve.status;" cycler="true" />
+                        </treecols>
+                        <treechildren />
+                    </tree>
+                </vbox>
+
+                <vbox>
+                    <button id="btnEdit" label="&list.edit;" oncommand="onEditClick();"/>
+                    <button id="btnEnable" label="Enable" oncommand="onEnableClick(this);"/>
+                    <!--        <spacer flex="1"/>
+                                <button id="btnHelp" label="Help" oncommand="onHelpClick();"/>
+                                <spacer flex="1"/> -->
+                </vbox>
+            </row>
+        </rows>
+    </grid>
+    <separator/>
+    <hbox id="smtpServerInfoBox">
+        <stack flex="1" class="inset">
+            <spacer id="backgroundBox"/>
+            <grid>
+                <columns>
+                    <column/>
+                    <column flex="1"/>
+                </columns>
+                <rows>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblHost" value="&options.info.servername;"/></hbox>
+                        <textbox id="txtDispHostname" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblPort" value="&options.info.port;"/></hbox>
+                        <textbox id="txtDispPort" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblAuth" value="&options.info.auth;"/></hbox>
+                        <textbox id="txtDispAuth" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblUserName" value="&options.info.username;"/></hbox>
+                        <textbox id="txtDispUserName" class="plain" readonly="true" />
+                    </row>
+                    <row align="center">
+                        <hbox pack="end"><label id="lblTLS" value="&options.info.secure;"/></hbox>
+                        <textbox id="txtDispTLS" class="plain" readonly="true" />
+                    </row>
+                </rows>
+            </grid>
+        </stack>
+    </hbox>
+    <spacer style="height:1em"/>
+        <hbox>
+            <label id="logger" value="" flex="1" />
+               <progressmeter id="out_of_office_connection_progressmeter" mode="undetermined" hidden="true" />
+        </hbox>
+    <spacer style="height:1em"/>
+</dialog>

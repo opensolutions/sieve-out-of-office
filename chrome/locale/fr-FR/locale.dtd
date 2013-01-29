@@ -1,0 +1,122 @@
+<!-- Accounts Dialog -->
+
+<!ENTITY accounts.properties "Properties...">
+<!ENTITY accounts.filters "Filters...">
+<!ENTITY accounts.column.active "Active">
+<!ENTITY accounts.column.name "Name">
+<!ENTITY accounts.description "Configure the MANAGESIEVE connectivity of your IMAP Accounts">
+
+<!-- Options Dialog -->
+<!ENTITY options.title "Options Sieve">
+
+<!ENTITY options.tab.general  "General">
+<!ENTITY options.tab.advanced "Advanced">
+<!ENTITY options.tab.debug    "Debug">
+
+<!ENTITY options.login.label "Identification">
+<!ENTITY options.login.key "I">
+<!ENTITY options.login.noAuth "Pas d'Identification">
+<!ENTITY options.login.imapAuth "Utiliser les Paramètres IMAP">
+<!ENTITY options.login.customAuth "Nom et mot de passe de l'utilisateur">
+<!ENTITY options.login.username.label "Nom utilisateur">
+<!ENTITY options.login.username.key "N">
+<!ENTITY options.login.show "Afficher les mots de passe...">
+<!ENTITY options.login.password.label "Mot de Passe">
+<!ENTITY options.login.password.key "P">
+<!ENTITY options.login.password.remember "Se souvenir du mot de passe">
+<!ENTITY options.login.password.remember.key "s">
+
+<!ENTITY options.host.label "Personnaliser les Paramètres">
+<!ENTITY options.host.key "I">
+<!ENTITY options.host.hostname.label "Nom du Serveur :">
+<!ENTITY options.host.hostname.key "N">
+<!ENTITY options.host.port.label "Port :">
+<!ENTITY options.host.port.key "P">
+<!ENTITY options.host.port.default "Défaut : 2000">
+<!ENTITY options.host.tls.key "U">
+<!ENTITY options.host.tls "Utiliser TLS, si disponible">
+
+<!ENTITY options.misc "Paramètres Généraux">
+<!ENTITY options.misc.keepalive "Tester la connexion toutes les">
+<!ENTITY options.misc.keepalive.key "T">
+<!ENTITY options.misc.compile "Compiler sur le serveur toutes les">
+<!ENTITY options.misc.compile.key "C">
+
+<!ENTITY options.misc.debug "Debugger les réponses sieve dans la console d'erreur">
+<!ENTITY options.debug.caption "Debug settings">
+<!ENTITY options.debug.request "Client to Server communication (requests)">
+<!ENTITY options.debug.response "Server to Client communication (responses)">
+<!ENTITY options.debug.exceptions "Exceptions and State Machine Information">
+
+<!ENTITY options.authmechanism.caption "Authentication Mechanism">
+<!ENTITY options.authmechanism "Override suggested Authentication Mechanism">
+<!ENTITY options.authmechanism.default "Use always:">
+<!ENTITY options.authmechanism.crammd5 "CRAM-MD5">
+<!ENTITY options.authmechanism.digestmd5 "DIGEST-MD5">
+<!ENTITY options.authmechanism.login "Login">
+<!ENTITY options.authmechanism.plain "Plain">
+
+<!ENTITY options.proxyauth.caption "Proxy Authorization">
+
+<!ENTITY options.info.servername "Nom du Serveur :">
+<!ENTITY options.info.port "Port :">
+<!ENTITY options.info.secure "Connexion Sécurisée :">
+<!ENTITY options.info.username "Utilisateur :">
+<!ENTITY options.info.auth "Identification :">
+
+
+<!-- Menu entries -->
+<!ENTITY menu.filters "Sieve Filtres de Message...">
+<!ENTITY menu.filters.key "F">
+<!ENTITY menu.options "Sieve Paramètres des Filtres...">
+<!ENTITY menu.options.key "P">
+
+
+<!-- Locales for the List Filter Dialog -->
+<!ENTITY list.title "Filtres Sieve">
+
+<!ENTITY list.accounts "Filtres Pour:">
+
+<!ENTITY list.log "Log">
+
+<!ENTITY list.tree "Filtres de message côtè serveur Sieve">
+<!ENTITY list.tree.active "Actif">
+<!ENTITY list.tree.name "Nom">
+
+<!ENTITY list.new "Nouveau...">
+<!ENTITY list.edit "Editer...">
+<!ENTITY list.delete "Supprimer">
+<!ENTITY list.rename "Renomer">
+
+<!ENTITY list.details.capability "Capacités du Serveur Sieve">
+<!ENTITY list.details.capability.implementation "Version du Serveur:">
+<!ENTITY list.details.capability.sasl "SASL Mechanisms:">
+<!ENTITY list.details.capability.extensions "Extensions:">
+
+<!-- Locale for the Edit Filter Dialog -->
+<!ENTITY edit.title "Edition d'un filtre Sieve">
+
+<!ENTITY edit.toolbar.save "Save">
+<!ENTITY edit.toolbar.undo "Undo">
+<!ENTITY edit.toolbar.redo "Redo">
+<!ENTITY edit.toolbar.cut "Cut">
+<!ENTITY edit.toolbar.copy "Copy">
+<!ENTITY edit.toolbar.paste "Paste">
+<!ENTITY edit.toolbar.compile "Syntaxcheck">
+<!ENTITY edit.toolbar.reference "Quick Reference">
+<!ENTITY edit.toolbar.tools "Tools">
+<!ENTITY edit.toolbar.import "Import Script">
+<!ENTITY edit.toolbar.export "Export Script">
+<!ENTITY edit.toolbar.back "Back" >
+<!ENTITY edit.toolbar.forward "Forward" >
+<!ENTITY edit.toolbar.home "Home" >
+<!ENTITY edit.toolbar.print "Print" >
+
+<!ENTITY edit.scriptname "Nom du script:">
+<!ENTITY edit.errorbar.title "Erreurs de syntaxe:">
+
+<!ENTITY edit.cancel "Abandonner">
+<!ENTITY edit.save "Sauvegarder">
+
+<!ENTITY edit.sidebar.uri "http://sieve.mozdev.org/reference/en/index.html">
+<!ENTITY edit.sidebar.title "Sieve Language Reference">

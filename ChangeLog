@@ -1,0 +1,44 @@
+out-of-office (2.0.0)
+  * Update by Open Solutions (http://www.opensolutions.ie/)
+  * UI improvements
+  * Many bug fixes
+  * Tested and made to work with Thunderbird 17
+  * Tested and made to work with Dovecot Sieve 2.1.7
+-- Jan 29 2013
+
+out-of-office (1.0.4)
+  * Fix bug on SASL LOGIN (authentication error)
+  * Clean code on requests/responses
+-- Sep 09 2011
+
+out-of-office (1.0.3)
+  * Add Thunderbird 5 to 8 compatibility
+  * Changes for mailnews-accountmanager-extensions
+  * Fix Laurent Cailleux Request (https://adullact.net/tracker/index.php?func=detail&aid=5020&group_id=569&atid=1672)
+-- Aug 01 2011
+
+out-of-office (1.0.2)
+  * Add Thunderbird 3.1 compatibility
+  * Fix a javascript warning
+-- Sep 13 2010
+
+out-of-office (1.0.1)
+  * Fix Thunderbird 3 compatibility
+-- Feb 23 2010
+
+out-of-office (1.0.0)
+  * Tag version 1
+  * ChangeLog/README
+-- Apr 9 2009
+
+out-of-office (0.0.4.0-alpha)
+  * French localization fix
+
+out-of-office (0.0.4.0-alpha)
+  * [#3888] bug fix : Tools window suddenly disappears when sieve server cannot be contacted
+
+out-of-office (0.0.2.0-alpha)
+  * Internal bugs fix
+
+out-of-office (0.0.1.0-alpha)
+  * First working release
