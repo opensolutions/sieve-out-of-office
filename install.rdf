@@ -61,7 +61,6 @@ This Out of Office plugin requires that your POP3 / IMAP server also have a siev
                 	<em:maxVersion>21.0a1</em:maxVersion>
 	            </Description>
         	</em:targetApplication>
-	    </Description>
 
 		<em:localized>
 			<Description>
