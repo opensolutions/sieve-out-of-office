@@ -317,7 +317,7 @@ SieveImapHost.prototype.getHostname
 SieveImapHost.prototype.getPort
     = function ()
 {
-    return 2000;
+    return 4190;
 }
 
 SieveImapHost.prototype.isTLS
@@ -386,7 +386,7 @@ SieveCustomHost.prototype.getPort
     if (gPref.prefHasUserValue(this.prefURI+".port"))
         return gPref.getIntPref(this.prefURI+".port");
 
-    return 2000;
+    return 4190;
 }
 
 SieveCustomHost.prototype.setPort
@@ -879,27 +879,39 @@ SieveAccount.prototype.setEnabledOutOfOffice = function( enabled )
         if( loadAll === undefined )
             loadAll = false;
 
-        for( var i = 0; i < accountManager.allServers.Count(); i++ )
-        {
-            var account = accountManager.allServers.GetElementAt( i ).QueryInterface( Components.interfaces.nsIMsgIncomingServer );
+        function Add( account, accounts ) {
+          if( account.type != "imap" )
+              return;
+          sieveAccount = new SieveAccount( account.rootMsgFolder.baseMessageURI.slice( 15 ), account.key, account.prettyName );
 
-            if( account.type != "imap" )
-                continue;
+          // if '[account].enabled' preference exists but it is set to false
+          if( !loadAll &&
+              (   !gPref.prefHasUserValue( sieveAccount.prefURI + ".enabled" ) ||
+                  ( gPref.prefHasUserValue( sieveAccount.prefURI + ".enabled" ) && !gPref.getBoolPref( sieveAccount.prefURI + ".enabled" ) )
+              )
+          )
+          {
+              return
+          }
 
-            sieveAccount = new SieveAccount( account.rootMsgFolder.baseMessageURI.slice( 15 ), account.key, account.prettyName );
+          // pass the key if the imap account, not the account! This ensures, that we always use the most recent settings.
+          accounts.push( sieveAccount );
+        }
 
-            // if '[account].enabled' preference exists but it is set to false
-            if( !loadAll &&
-                (   !gPref.prefHasUserValue( sieveAccount.prefURI + ".enabled" ) ||
-                    ( gPref.prefHasUserValue( sieveAccount.prefURI + ".enabled" ) && !gPref.getBoolPref( sieveAccount.prefURI + ".enabled" ) )
-                )
-            )
-            {
-                continue;
-            }
-
-            // pass the key if the imap account, not the account! This ensures, that we always use the most recent settings.
-            this.accounts.push( sieveAccount );
+        if (accountManager.accounts.length) {
+          // Gecko 17+
+          for( var i = 0; i < accountManager.allServers.length; i++ )
+          {
+              var account = accountManager.allServers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer);
+              Add( account, this.accounts );
+          }
+        } else {
+          // Gecko < 17
+          for( var i = 0; i < accountManager.allServers.Count(); i++ )
+          {
+              var account = accountManager.allServers.GetElementAt( i ).QueryInterface( Components.interfaces.nsIMsgIncomingServer );
+              Add( account, this.accounts );
+          }
         }
     }
 
