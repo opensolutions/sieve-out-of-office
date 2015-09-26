@@ -403,6 +403,7 @@ var gEventConnection =
         }
 */        if(gTryToCreate == true /*&& response.getMessage()*/ ){
             gOutOfOfficeSieveServer.createScript();
+            gOutOfOfficeSieveServer.activateScript();
             gTryToCreate = false;
             return;
         }
